@@ -1,0 +1,9 @@
+.venv/
+.env
+*.wav
+__pycache__/
+*.pyc
+
+# Piper voice model
+*.onnx
+*.onnx.json
