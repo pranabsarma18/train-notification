@@ -409,25 +409,42 @@ The Python process exits normally.
 
 ---
 
-## 📋 Logs
+## 📋 Checking the Service
 
-Since the application runs under systemd, its output can be inspected using:
-
-```bash
-journalctl --user -u train-monitor.service
-```
-
-For recent logs:
+Check the current status of the train monitor:
 
 ```bash
-journalctl --user -u train-monitor.service -n 50
+systemctl --user status train-monitor.service
 ```
 
-To follow the logs live:
+Start the service manually:
 
 ```bash
-journalctl --user -u train-monitor.service -f
+systemctl --user start train-monitor.service
 ```
+
+Restart the service:
+
+```bash
+systemctl --user restart train-monitor.service
+```
+
+Stop the service:
+
+```bash
+systemctl --user stop train-monitor.service
+```
+
+The service status also shows recent output from the Python application, which is useful for checking whether the monitor started correctly and whether it encountered an error.
+
+For troubleshooting, the application can also be run directly:
+
+```bash
+source .venv/bin/activate
+python train_monitor.py
+```
+
+Running it manually is useful when troubleshooting API requests, Bluetooth connectivity, audio output, or Python errors.
 
 ---
 
